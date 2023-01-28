@@ -27,6 +27,8 @@ const Navbar = () => {
           <li>
             <NavLink to="/about">About</NavLink>
           </li>
+          {/* Navbar */}
+          {/* new comment navbar 2 */}
           <li>
             <NavLink to="/signin">SignUp</NavLink>
           </li>
