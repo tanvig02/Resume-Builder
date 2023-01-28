@@ -18,24 +18,6 @@ const Final = () => {
     // console.log(userData.Name);
   };
 
-  // const pdf_file_url = "http://localhost:8000/resume.pdf";
-
-  // const downloadFile = (url) => {
-  //   //benefit of using blob is that insted of opening the pdf in the browser, it will be download
-  //   fetch(url)
-  //     .then((res) => res.blob())
-  //     .then((blob) => {
-  //       const blobURL = window.URL.createObjectURL(new Blob([blob]));
-  //       const fileName = url.split("/").pop();
-  //       const aTag = document.createElement("a");
-  //       aTag.href = blobURL;
-  //       aTag.setAttribute("download", fileName);
-  //       document.body.appendChild(aTag);
-  //       aTag.click();
-  //       aTag.remove();
-  //     });
-  // };
-
   return (
     <>
       <h1 className="font-bold m-4 text-2xl  ">
