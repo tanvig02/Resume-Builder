@@ -1,7 +1,4 @@
 import React, { useState } from "react";
-import res1 from "../images/res1.png";
-import res2 from "../images/res2.png";
-import res3 from "../images/res3.png";
 
 import Stepper from "./resume/Stepper";
 import StepperController from "./resume/StepperController";
@@ -60,7 +57,6 @@ const Resume = () => {
 
   return (
     <>
-      {/* change */}
       <div className="flex flex-col justify-around items-center h-screen w-full bg-slate-200">
         <h1 className="text-4xl font-bold font-mono text-center">
           Three easy steps to build a professional resume
@@ -88,7 +84,7 @@ const Resume = () => {
 
         <div className="md:w-1/2 mx-auto shadow-xl rounded-2xl pb-2 bg-white">
           {/* {Stepper} */}
-          <div className="container horizontal mt-5">
+          <div className="container horizontal mt-3">
             <Stepper steps={steps} currStep={currStep} />
           </div>
 
