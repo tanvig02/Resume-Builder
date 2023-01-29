@@ -35,6 +35,9 @@ const Navbar = () => {
           <li>
             <NavLink to="/login">LogIn</NavLink>
           </li>
+          <li>
+            <NavLink to="/resume">Create resume</NavLink>
+          </li>
         </ul>
 
         <div className="md:hidden z-10 pt-3" onClick={buttonClick}>

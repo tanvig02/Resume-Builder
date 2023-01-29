@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import home2 from "../images/home2.jpg";
 import "../App.css";
 
@@ -17,9 +17,9 @@ const Home = () => {
               templates.
             </p>
             <button className="bg-violet-500 hover:bg-violet-700 w-fit m-2 px-4 py-2 text-white rounded-xl">
-              <NavLink className="hover:text-white" to="/resume">
+              <Link className="hover:text-white" to="/resume">
                 Get Started
-              </NavLink>
+              </Link>
             </button>
           </div>
           <div>

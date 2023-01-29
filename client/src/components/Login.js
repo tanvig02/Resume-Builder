@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 
@@ -10,15 +10,16 @@ const Login = () => {
     localStorage.getItem(localStorage.getItem("authenticated") || false)
   );
 
-  // const handelInput = (event) => {
-  //   // const {name, value} = event.target;
-  // };
-
   const loginUser = async (event) => {
     event.preventDefault();
 
     // const email = event.target.value;
     // const password = event.target.value;
+
+    //Protected login
+    console.log("login useEffect1");
+    localStorage.setItem("login", true);
+    navigate("/resume");
 
     const res = await fetch("/login", {
       method: "POST",
@@ -39,6 +40,14 @@ const Login = () => {
       navigate("/");
     }
   };
+  //redirecting
+  useEffect(() => {
+    let login = localStorage.getItem("login");
+    if (login) {
+      navigate("/resume");
+    }
+    console.log("login useEffect");
+  });
 
   return (
     <>
@@ -71,10 +80,16 @@ const Login = () => {
 
             <button
               onClick={loginUser}
-              className="w-full my-5 py-2 bg-teal-500 shadow-lg shadow-teal-500/50 text-black hover:text-white "
+              className="w-full mt-5 py-2 bg-teal-500 shadow-lg shadow-teal-500/50 text-black hover:text-white "
             >
               LogIn
             </button>
+            <div className="text-s">
+              <p>Don't have account? </p>
+              <p>
+                Create New Account -- <a href="/signin"> SignUp</a>
+              </p>
+            </div>
           </div>
         </form>
       </div>

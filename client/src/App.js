@@ -6,6 +6,7 @@ import Contact from "./components/Contact";
 import Resume from "./components/Resume";
 import Login from "./components/Login";
 import Signup from "./components/SignUp";
+import Protected from "./components/Protected";
 import ResumeTemp from "./components/resume/ResumeTemp";
 import { Route, Routes } from "react-router-dom";
 
@@ -20,8 +21,11 @@ const App = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/signin" element={<Signup />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/resume" element={<Resume />} />
-        <Route path="/template" element={<ResumeTemp />} />
+        <Route path="/resume" element={<Protected Component={Resume} />} />
+        <Route
+          path="/template"
+          element={<Protected Component={ResumeTemp} />}
+        />
       </Routes>
     </>
   );
