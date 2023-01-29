@@ -57,8 +57,8 @@ const Resume = () => {
 
   return (
     <>
-      {/* h-screen pb-2 changes */}
-      <div className="flex flex-col justify-around items-center   w-full bg-slate-300">
+      {/* h-screen pb-2 changes bsaicbdib */}
+      <div className="flex flex-col justify-around items-center  w-full bg-slate-300">
         <div className="md:w-1/2 mx-auto shadow-xl rounded-2xl my-10 h-[1000px] bg-white">
           {/* {Stepper} */}
           <div className="container horizontal mt-3">
