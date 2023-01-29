@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 const Stepper = ({ steps, currStep }) => {
   const [newStep, setNewStep] = useState([]);
   const stepRef = useRef();
-  console.log("currStep " + currStep);
+  // console.log("currStep " + currStep);
 
   const updateStep = (stepNum, steps) => {
     const stepInfo = [...steps];
@@ -12,7 +12,7 @@ const Stepper = ({ steps, currStep }) => {
     // console.log(stepNum);
     //array containg indo of all steps
     // console.log(steps.steps);
-    console.log(steps);
+    // console.log(steps);
     while (count < stepInfo.length) {
       if (count === stepNum) {
         stepInfo[count] = {
@@ -84,9 +84,9 @@ const Stepper = ({ steps, currStep }) => {
             : "w-full flex items-center"
         }
       >
-        {console.log("selected " + index)}
+        {/* {console.log("selected " + index)}
         {console.log("newStep")}
-        {console.log(newStep[0].selected)}
+        {console.log(newStep[0].selected)} */}
 
         <div className="relative flex flex-col items-center text-teal-600">
           <div

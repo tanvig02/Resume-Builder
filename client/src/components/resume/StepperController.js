@@ -3,7 +3,7 @@ import React from "react";
 const StepperController = ({ handleClick, steps, currStep }) => {
   return (
     <>
-      {console.log(currStep)}
+      {/* {console.log(currStep)} */}
       <div className="container flex justify-around mt-4 mb-8">
         {/* back button */}
         <button

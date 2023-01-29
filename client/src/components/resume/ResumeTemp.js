@@ -59,15 +59,6 @@ const ResumeTemp = () => {
                   </div>
                 );
               })}
-              {/* <div className="cv-content-item">
-              <div className="title">Frontend Developer</div>
-              <div className="subtitle">Enterprise Name</div>
-              <div className="time">Jan 2017 - 3 year, Turkey</div>
-              <div className="exprecince">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras a
-                ante pulvinar, consectetur ante et.
-              </div>
-            </div> */}
             </div>
           </div>
 
