@@ -18,8 +18,6 @@ const Login = () => {
 
     //Protected login
     console.log("login useEffect1");
-    localStorage.setItem("login", true);
-    navigate("/resume");
 
     const res = await fetch("/login", {
       method: "POST",
@@ -30,14 +28,15 @@ const Login = () => {
     });
 
     const data = await res.json();
-    if (data.status === false || !data) {
-      window.alert(data.data.message);
-      console.log(data.data.message);
+    if (res.status === false || !data) {
+      window.alert("Invalid Credentials");
+      console.log("Invalid Credentials");
     } else {
-      window.alert(data.data.message);
-      console.log(data.data.message);
+      window.alert("login successfull");
+      console.log("login successfull");
       localStorage.setItem("authenticated", true);
       navigate("/");
+      localStorage.setItem("login", true);
     }
   };
   //redirecting

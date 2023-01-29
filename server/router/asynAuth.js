@@ -2,17 +2,54 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const secreteKey = "secretKey";
 
 require("../mongoose_db/connect");
 const user = require("../model/userSchema");
+
+//Verifying the token
+const verifyToken = async (req, res, next) => {
+  try {
+    const token = req.cookie.jwtoken;
+    const verifyT = jwt.verify(token, process.env.SECRET_KEY);
+
+    const rootUser = await user.findOne({
+      _id: verifyToken._id,
+      "tokens.token": token,
+    });
+    if (!rootUser) {
+      throw new Error("user not found");
+    }
+
+    req.token = token;
+    req.rootUser = rootUser;
+    req.userID = rootUser._id;
+    next();
+  } catch (err) {
+    res.status(400).send("Unauthorised: No token provided");
+    console.log(err);
+  }
+};
 
 router.get("/", (req, res) => {
   res.send("hello form router");
   // res.sendFile(__dirname + "/index.html");
 });
-router.get("/template", (req, res) => {
-  res.send("hello form router");
-  // res.sendFile(__dirname + "/index.html");
+
+//Resume Route
+router.get("/template", verifyToken, (req, res) => {
+  jwt.verify(req, token, secreteKey, (err, authData) => {
+    if (err) {
+      res.send({
+        msg: "invalid token",
+      });
+    } else {
+      res.json({
+        msg: "build your resume",
+        authData,
+      });
+    }
+  });
 });
 
 //Registration Details
@@ -91,54 +128,53 @@ router.post("/login", async (req, res) => {
     if (!email || !password) {
       console.log("nothing in input");
       return res.json({
-        status: false,
-        data: {
-          data: "fill all details",
-          message: "fill all details",
-        },
+        error: "fill all details",
       });
     }
     //checking if email present or not in database
     const userLogin = await user.findOne({ email: email });
 
     if (userLogin) {
-      console.log(userLogin.password);
-      console.log(userLogin.cpassword);
+      // console.log(userLogin.password);
+      // console.log(userLogin.cpassword);
       const userPass = await bcrypt.compare(password, userLogin.password);
 
+      console.log("before token generated");
       const tokenG = await userLogin.generateAuthToken();
       console.log(tokenG);
+      //to store token in a cookie we hav a cookie funtion that takes <token_name>, <token _value>, expire time
+      res.cookie("jwtoken", tokenG, {
+        //setting time for expiring the token, adding 30day from user login
+        expires: new Date(Date.now() + 258920000000),
+        httpOnly: true,
+      });
+      res.status(200).json({ user: user._id });
+      //Generating token
+      // jwt.sign(
+      //   { userLogin },
+      //   secreteKey,
+      //   { expiresIn: "60s" },
+      //   (err, token) => {
+      //     res.json({
+      //       token,
+      //     });
+      //     console.log("token generated");
+      //   }
+      // );
 
-      // res.cookie("jwtoken", tokenG, {
-      //   //setting time for expiring the token, adding 30day from user login
-      //   expires: new Date(Date.now + 258920000000),
-      //   httpOnly: true,
-      // });
-
+      //if password matches
       if (userPass) {
         return res.json({
-          status: true,
-          data: {
-            data: "user login successfully",
-            message: "user login successfully",
-          },
+          message: "user login successfully",
         });
       } else {
-        return res.json({
-          status: false,
-          data: {
-            data: "invalid credentials",
-            message: "invalid credentials",
-          },
+        return res.status(400).json({
+          error: "invalid credentials",
         });
       }
     } else {
-      return res.json({
-        status: false,
-        data: {
-          data: "user not exist",
-          message: "user not exist",
-        },
+      return resstatus(400).json({
+        error: "invalid credentials",
       });
     }
   } catch (err) {
