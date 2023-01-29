@@ -60,6 +60,7 @@ const Resume = () => {
 
   return (
     <>
+      {/* change */}
       <div className="flex flex-col justify-around items-center h-screen w-full bg-slate-200">
         <h1 className="text-4xl font-bold font-mono text-center">
           Three easy steps to build a professional resume
