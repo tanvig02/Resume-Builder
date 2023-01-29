@@ -1,7 +1,4 @@
 import React, { useState } from "react";
-import res1 from "../images/res1.png";
-import res2 from "../images/res2.png";
-import res3 from "../images/res3.png";
 
 import Stepper from "./resume/Stepper";
 import StepperController from "./resume/StepperController";
@@ -60,34 +57,11 @@ const Resume = () => {
 
   return (
     <>
-      <div className="flex flex-col justify-around items-center h-screen w-full bg-slate-200">
-        <h1 className="text-4xl font-bold font-mono text-center">
-          Three easy steps to build a professional resume
-        </h1>
-        <div className="flex flex-col sm:flex-row justify-around">
-          {/* w-[400px] h-[600px] */}
-          <div className="">
-            <img src={res1} alt="" />
-            <p className="text-xl text-center w-[400px]">
-              1. Choose from our extensive template collection and personalize
-              to your style.
-            </p>
-          </div>
-          <div className="text-xl text-center ">
-            <img src={res2} alt="" />
-            <p className="w-[400px]">2. Add your Specifications.</p>
-          </div>
-          <div className="">
-            <img src={res3} alt="" />
-            <p className="text-xl text-center w-[400px]">
-              3. Download in the file format you need and send!
-            </p>
-          </div>
-        </div>
-
-        <div className="md:w-1/2 mx-auto shadow-xl rounded-2xl pb-2 bg-white">
+      {/* h-screen pb-2 */}
+      <div className="flex flex-col justify-around items-center   w-full bg-slate-300">
+        <div className="md:w-1/2 mx-auto shadow-xl rounded-2xl my-10 h-[1000px] bg-white">
           {/* {Stepper} */}
-          <div className="container horizontal mt-5">
+          <div className="container horizontal mt-3">
             <Stepper steps={steps} currStep={currStep} />
           </div>
 
