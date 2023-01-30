@@ -40,32 +40,57 @@ const Navbar = () => {
           </li>
         </ul>
 
-        <div className="md:hidden z-10 pt-3" onClick={buttonClick}>
-          {!nav ? <FaBars /> : <FaTimes />}
-        </div>
-
-        <div>
-          {/* absolute top-0 left-0 w-full h-screen */}
-          <ul
-            className={
-              !nav
-                ? "hidden"
-                : "absolute top-0 left-0 w-full h-screen bg-[#afcfff] flex flex-col justify-center items-center"
-            }
+        {/* Mobile view */}
+        <div className="flex flex-col relative">
+          <button
+            onClick={buttonClick}
+            className=" bg-gray-300 text-gray-700 font-semibold py-2 px-4 rounded inline-flex  flex-col items-center"
           >
-            <li>
-              <NavLink to="/">Home</NavLink>
-            </li>
-            <li>
-              <NavLink to="/about">About</NavLink>
-            </li>
-            <li>
-              <NavLink to="/login">Login</NavLink>
-            </li>
-            <li>
-              <NavLink to="/contact">Contact</NavLink>
-            </li>
-          </ul>
+            {!nav ? <FaBars /> : <FaTimes />}
+          </button>
+
+          <div className="inline-block relative  ">
+            <ul
+              onClick={buttonClick}
+              // className="  hidden text-gray-700 pt-1 group-hover:block "
+              className={
+                !nav ? "hidden " : "  text-gray-700 pt-1 absolute block "
+              }
+            >
+              <li>
+                <NavLink
+                  className="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
+                  to="/"
+                >
+                  Home
+                </NavLink>
+              </li>
+              <li className="">
+                <NavLink
+                  className="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
+                  to="/about"
+                >
+                  About
+                </NavLink>
+              </li>
+              <li className="">
+                <NavLink
+                  className="rounded-b bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
+                  to="/signin"
+                >
+                  SignUp
+                </NavLink>
+              </li>
+              <li className="">
+                <NavLink
+                  className="rounded-b bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
+                  to="/login"
+                >
+                  Login
+                </NavLink>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
