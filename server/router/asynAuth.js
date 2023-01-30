@@ -31,11 +31,6 @@ const verifyToken = async (req, res, next) => {
   }
 };
 
-router.get("/", (req, res) => {
-  res.send("hello form router");
-  // res.sendFile(__dirname + "/index.html");
-});
-
 //Resume Route
 router.get("/template", verifyToken, (req, res) => {
   jwt.verify(req, token, secreteKey, (err, authData) => {
