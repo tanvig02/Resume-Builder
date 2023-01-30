@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-// const fpdf = require("node-pdf");
+const path = require("path");
 
 //using dotenv for "secure" connection, out database url will be stored in env file
 //to use varialbe of env file, we need to give the "path" and use "process.env.<varName>"
@@ -28,6 +28,12 @@ app.use(require("./router/asynAuth"));
 // app.get("/about", middleware, (req, res) => {
 //   res.send("about page");
 // });
+
+app.use(express.static(path.join(__dirname, "../client/build")));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/build/index.html"));
+});
+// app.use(require("../client/build"))
 
 app.listen(port, () => {
   console.log(`listing to server at ${port} port`);
