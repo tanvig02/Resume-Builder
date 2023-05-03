@@ -50,47 +50,49 @@ const Login = () => {
 
   return (
     <>
-      <div className=" h-screen bg-[#bec4cc] flex justify-center py-4 ">
-        <form
-          method="POST"
-          className=" h-[400px] max-w-[400px] w-full mx-auto bg-[#400b51] p-8 px-8 rounded-lg"
-        >
-          <h2 className="text-4xl dark:text-white font-bold text-center">
-            LogIn
-          </h2>
-          <div className="flex flex-col text-gray-300 py-2">
-            <label placeholder="Enter your email">Email</label>
-            <input
-              name="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="rounded-lg bg-[#9eacc0] mt-2 p-2 mb-2 focus:border-blue-500 focus:bg-[#658bc1] focus:outline-none"
-              type="email"
-            />
-
-            <label placeholder="Enter password">Password</label>
-            <input
-              name="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="rounded-lg bg-[#9eacc0] mt-2 p-2 mb-2 focus:border-blue-500 focus:bg-[#658bc1] focus:outline-none"
-              type="password"
-            />
-
-            <button
-              onClick={loginUser}
-              className="w-full mt-5 py-2 bg-teal-500 shadow-lg shadow-teal-500/50 text-black hover:text-white "
-            >
+      <div className="w-full bg-zinc-300 h-screen">
+        <div className=" max-w-[1230px]  xl:mx-auto mx-10 flex justify-center py-4 ">
+          <form
+            method="POST"
+            className=" h-[400px] max-w-[400px] w-full mx-auto bg-[#400b51] p-8 px-8 rounded-lg"
+          >
+            <h2 className="text-4xl dark:text-white font-bold text-center">
               LogIn
-            </button>
-            <div className="text-s">
-              <p>Don't have account? </p>
-              <p>
-                Create New Account -- <a href="/signin"> SignUp</a>
-              </p>
+            </h2>
+            <div className="flex flex-col text-gray-300 py-2">
+              <label placeholder="Enter your email">Email</label>
+              <input
+                name="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="rounded-lg bg-[#9eacc0] mt-2 p-2 mb-2 focus:border-blue-500 focus:bg-[#658bc1] focus:outline-none"
+                type="email"
+              />
+
+              <label placeholder="Enter password">Password</label>
+              <input
+                name="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="rounded-lg bg-[#9eacc0] mt-2 p-2 mb-2 focus:border-blue-500 focus:bg-[#658bc1] focus:outline-none"
+                type="password"
+              />
+
+              <button
+                onClick={loginUser}
+                className="w-full mt-5 py-2 bg-teal-500 shadow-lg shadow-teal-500/50 text-black hover:text-white "
+              >
+                LogIn
+              </button>
+              <div className="text-s">
+                <p>Don't have account? </p>
+                <p>
+                  Create New Account -- <a href="/signin"> SignUp</a>
+                </p>
+              </div>
             </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </>
   );

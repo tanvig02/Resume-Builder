@@ -11,87 +11,80 @@ const Navbar = () => {
   };
 
   return (
-    <div>
+    <div className="w-full bg-[#9d1dba] sticky top-0 z-50">
       {/* fixed w-screen */}
-      <div className="flex justify-around p-2 align-middle text-white bg-[#9d1dba]  ">
-        <div className="font-bold font-mono text-4xl text-[#fff] ">
-          {/* <img src={logo} alt="" className="w-20" /> */}
-          <h1>RBuilder</h1>
-        </div>
+      <div className=" text-white max-w-[1240px] xl:mx-auto mx-10 h-[80px] pt-3">
+        <nav className="flex justify-between items-center ">
+          <div className="font-bold font-mono text-4xl h-auto">
+            {/* <img src={logo} alt="" className="w-20" /> */}
+            RBuilder
+          </div>
 
-        {/* align-middle text-center space-x-7*/}
-        <ul className="md:flex align-middle space-x-7 pt-2 hidden ">
-          <li>
-            <NavLink to="/">Home</NavLink>
-          </li>
-          <li>
-            <NavLink to="/about">About</NavLink>
-          </li>
-          {/* Navbar */}
-          {/* new comment navbar 2 */}
-          <li>
-            <NavLink to="/signin">SignUp</NavLink>
-          </li>
-          <li>
-            <NavLink to="/login">LogIn</NavLink>
-          </li>
-          <li>
-            <NavLink to="/resume">Create resume</NavLink>
-          </li>
-        </ul>
+          {/* align-middle text-center space-x-7*/}
+          <ul className="lg:flex align-middle space-x-7 pt-2 hidden ">
+            <li className="cursor-pointer ">
+              {/* <NavLink className="hover:text-black" to="/">
+                Home
+              </NavLink> */}
+              <a className="hover:text-black" href="#home">
+                Home
+              </a>
+            </li>
+            <li className="cursor-pointer ">
+              <a className="hover:text-black" href="/#about">
+                About
+              </a>
+            </li>
+            {/* Navbar */}
+            {/* new comment navbar 2 */}
+            <li className="cursor-pointer ">
+              <NavLink className="hover:text-black" to="/signin">
+                SignUp
+              </NavLink>
+            </li>
+            <li className="cursor-pointer ">
+              <NavLink className="hover:text-black" to="/login">
+                LogIn
+              </NavLink>
+            </li>
+            <li>
+              <NavLink className="hover:text-black" to="/resume">
+                Create resume
+              </NavLink>
+            </li>
+          </ul>
 
-        {/* Mobile view */}
-        <div className="flex flex-col relative">
-          <button
-            onClick={buttonClick}
-            className=" bg-gray-300 text-gray-700 font-semibold py-2 px-4 rounded inline-flex  flex-col items-center"
-          >
+          {/* Mobile view */}
+          <button onClick={buttonClick} className="text-white md:hidden">
             {!nav ? <FaBars /> : <FaTimes />}
           </button>
-
-          <div className="inline-block relative  ">
+          <div className="">
             <ul
               onClick={buttonClick}
               // className="  hidden text-gray-700 pt-1 group-hover:block "
               className={
-                !nav ? "hidden " : "  text-gray-700 pt-1 absolute block "
+                !nav
+                  ? "hidden"
+                  : "w-screen flex flex-col py-10 space-y-14 font-semibold text-center top-[60px] bg-purple-400 z-10 left-0 text-gray-700 absolute"
               }
             >
               <li>
-                <NavLink
-                  className="rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
-                  to="/"
-                >
-                  Home
-                </NavLink>
+                {/* <NavLink to="/">Home</NavLink> */}
+                <a href="/#home">Home </a>
               </li>
               <li className="">
-                <NavLink
-                  className="bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
-                  to="/about"
-                >
-                  About
-                </NavLink>
+                {/* <NavLink to="/about">About</NavLink> */}
+                <a href="/#about">About </a>
               </li>
               <li className="">
-                <NavLink
-                  className="rounded-b bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
-                  to="/signin"
-                >
-                  SignUp
-                </NavLink>
+                <NavLink to="/signin">SignUp</NavLink>
               </li>
               <li className="">
-                <NavLink
-                  className="rounded-b bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
-                  to="/login"
-                >
-                  Login
-                </NavLink>
+                <NavLink to="/login">Login</NavLink>
               </li>
             </ul>
           </div>
-        </div>
+        </nav>
       </div>
     </div>
   );

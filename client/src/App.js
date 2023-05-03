@@ -11,13 +11,14 @@ import ResumeTemp from "./components/resume/ResumeTemp";
 import { Route, Routes } from "react-router-dom";
 
 const App = () => {
+  // "proxy": "https://fair-blue-lemur-veil.cyclic.app",
   return (
     <>
       <Navbar />
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
+        {/* <Route path="/about" element={<About />} /> */}
         <Route path="/contact" element={<Contact />} />
         <Route path="/signin" element={<Signup />} />
         <Route path="/login" element={<Login />} />

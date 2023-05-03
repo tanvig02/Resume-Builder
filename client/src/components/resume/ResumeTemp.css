@@ -90,6 +90,7 @@ body {
     margin-bottom: 0.5rem;
     color: black;
     width: fit-content;
+    padding-top: 10px;
 }
 
 .cv-subname {

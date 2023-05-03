@@ -14,7 +14,6 @@ const ResumeTemp = () => {
   const Cdata = userData.inputFieldC;
   const Edata = userData.inputFieldE;
   console.log("Resume template");
-  console.log(userData.inputFieldP[0].Pdata);
 
   const PrintCV = () => {
     window.print();
@@ -64,9 +63,7 @@ const ResumeTemp = () => {
 
           {/* Personal Details */}
           <div className="cv-wrap">
-            <div className="avatar">
-              <img src={profile} alt="" />
-            </div>
+            {/* <div className="avatar"><img src={profile} alt="" /></div> */}
             <div className="info">
               <div className="title">{userData.Address}</div>
               <p>

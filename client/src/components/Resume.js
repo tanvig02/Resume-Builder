@@ -57,31 +57,35 @@ const Resume = () => {
 
   return (
     <>
-      <div className="flex flex-col justify-around items-center h-screen w-full bg-slate-200">
-        <div className="md:w-1/2 mx-auto shadow-xl rounded-2xl pb-2 bg-white">
-          {/* {Stepper} */}
-          <div className="container horizontal mt-3">
-            <Stepper steps={steps} currStep={currStep} />
-          </div>
+      <div className="w-full bg-zinc-300 ">
+        <div className=" max-w-[1230px]  xl:mx-auto mx-10 py-3 ">
+          <div className="flex flex-col justify-around items-center ">
+            <div className=" shadow-xl rounded-2xl pb-2 bg-white ">
+              {/* {Stepper} */}
+              <div className="container horizontal mt-3 lg:w-[800px]">
+                <Stepper steps={steps} currStep={currStep} />
+              </div>
 
-          {/* Display components */}
-          <div className="my-10 p-10">
-            <StepperContext.Provider
-              value={{ userData, setUserData, finalData, setfinalData }}
-            >
-              {displayStep(currStep)}
-            </StepperContext.Provider>
-          </div>
+              {/* Display components */}
+              <div className="p-10">
+                <StepperContext.Provider
+                  value={{ userData, setUserData, finalData, setfinalData }}
+                >
+                  {displayStep(currStep)}
+                </StepperContext.Provider>
+              </div>
 
-          {/* Navigation controller */}
-          {/* in last step is will not show the back and next button */}
-          {currStep !== steps.length && (
-            <StepperController
-              handleClick={handleClick}
-              steps={steps}
-              currStep={currStep}
-            />
-          )}
+              {/* Navigation controller */}
+              {/* in last step is will not show the back and next button */}
+              {currStep !== steps.length && (
+                <StepperController
+                  handleClick={handleClick}
+                  steps={steps}
+                  currStep={currStep}
+                />
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </>
