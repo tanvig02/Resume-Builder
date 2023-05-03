@@ -7,7 +7,7 @@ const secreteKey = "secretKey";
 require("../mongoose_db/connect");
 const user = require("../model/userSchema");
 
-//Verifying the token
+//Verifying the token MiddleWare
 const verifyToken = async (req, res, next) => {
   try {
     const token = req.cookie.jwtoken;
@@ -55,7 +55,7 @@ router.post("/register", async (req, res) => {
   //req.body.name, req.body.email --> this will be the data filled by user
   console.log(name);
 
-  //validation & statusCode - client error 422
+  //validation & statusCode - client error 422.
   if (!name || !email || !phone || !work || !password || !cpassword) {
     return res.status(422).json({ error: "plz fill all details" });
   }
@@ -63,6 +63,7 @@ router.post("/register", async (req, res) => {
   try {
     //finding if email exist in database or not
     const userExist = await user.findOne({ email: email });
+    console.log(userExist);
     if (userExist) {
       // return res.status(422).json({ error: "email already exist" });
       return res.json({
@@ -90,8 +91,8 @@ router.post("/register", async (req, res) => {
         password,
         cpassword,
       });
-      //Hashing "password" -- then save the details
 
+      //Hashing "password" -- then save the details
       await newUser.save();
       console.log("save");
       // res.status(201).json({ message: "user registed successfully" });

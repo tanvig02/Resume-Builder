@@ -7,11 +7,13 @@ const path = require("path");
 
 //using dotenv for "secure" connection, out database url will be stored in env file
 //to use varialbe of env file, we need to give the "path" and use "process.env.<varName>"
-dotenv.config({ path: "../config.env" });
+// dotenv.config({ path: "/server/config.env" });
+dotenv.config({ path: `${__dirname}/.env` });
 // const DB = process.env.DATABASE;
 //import user created modules
 require("./mongoose_db/connect");
 const port = process.env.PORT;
+console.log(port);
 
 //middlewares
 //converting the data in json form
@@ -35,7 +37,7 @@ app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
 // app.use(require("../"))
-console.log(path.join(__dirname, "../client/build/index.html"));
+// console.log(path.join(__dirname, "../client/build/index.html"));
 
 app.listen(port, () => {
   console.log(`listing to server at ${port} port`);
