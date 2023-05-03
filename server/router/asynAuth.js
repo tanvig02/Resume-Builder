@@ -10,7 +10,7 @@ const user = require("../model/userSchema");
 //Verifying the token MiddleWare
 const verifyToken = async (req, res, next) => {
   try {
-    const token = req.cookie.jwt;
+    const token = req.cookie.jwtoken;
     const verifyT = jwt.verify(token, process.env.SECRET_KEY);
 
     const rootUser = await user.findOne({
@@ -169,7 +169,7 @@ router.post("/login", async (req, res) => {
         });
       }
     } else {
-      return resstatus(400).json({
+      return res.status(400).json({
         error: "invalid credentials",
       });
     }
