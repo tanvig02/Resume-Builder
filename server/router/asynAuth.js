@@ -10,7 +10,7 @@ const user = require("../model/userSchema");
 //Verifying the token MiddleWare
 const verifyToken = async (req, res, next) => {
   try {
-    const token = req.cookie.jwtoken;
+    const token = req.cookie.jwt;
     const verifyT = jwt.verify(token, process.env.SECRET_KEY);
 
     const rootUser = await user.findOne({
